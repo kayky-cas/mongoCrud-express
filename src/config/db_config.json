@@ -1,0 +1,6 @@
+{
+    "url": "mongodb://localhost/",
+    "db": "animais",
+    "db_configs": {"useNewUrlParser": true, "useUnifiedTopology": true},
+    "collection": "animals"
+}
