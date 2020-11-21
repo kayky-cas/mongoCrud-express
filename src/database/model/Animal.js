@@ -1,13 +1,13 @@
 const db_config = require('../../config/db_config.json');
 
-const db = require('../connect-mongo')();
+const db = require('../connect-mongo');
     
 const animalModel = {
-    nome: String,
-    nacionalidade: String,
-    imagem: String
+    name: String,
+    nationality: String,
+    binominal: String
 }
 
-const Animal = db.model(db_config.collection, animalModel)
+const Animal = db.model(db_config.collection[0], animalModel)
 
 module.exports = Animal;

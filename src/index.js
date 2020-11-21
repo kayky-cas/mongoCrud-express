@@ -1,5 +1,6 @@
 const express = require('express');
-const api = express();
+const app = express();
+const cors = require('cors');
 const config = require('./config/api_config.json');
 
 const home_page = require('./route/home_page');
@@ -9,15 +10,19 @@ const deleteRoute = require('./route/crud/delete');
 const insertRoute = require('./route/crud/insert');
 const updateRoute = require('./route/crud/update');
 
-api.use('/select', selectRoute);
+app.use(cors());
 
-api.use('/delete', deleteRoute);
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-api.use('/update', updateRoute);
+app.use('/', home_page);
 
-api.use('/insert', insertRoute);
+app.use('/select', selectRoute);
+app.use('/delete', deleteRoute);
+app.use('/update', updateRoute);
+app.use('/insert', insertRoute);
 
 
-api.listen(config.port, () => {
+app.listen(config.port, () => {
     console.log(`${config.url}:${config.port}`);
 });
