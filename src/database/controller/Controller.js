@@ -14,6 +14,10 @@ class Controller {
     async insert(object) {
         await this.model.create(object);
     }
+
+    async update(object, update) {
+        await this.model.updateMany(object, update);
+    }
 }
 
 module.exports = Controller;
